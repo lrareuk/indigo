@@ -580,7 +580,11 @@ img { max-width: 100%; display: block; }
 
 .features { padding: 100px 0 80px; }
 
-.features__list { max-width: 620px; }
+.features__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+}
 
 .feature {
   display: flex;
@@ -611,7 +615,6 @@ img { max-width: 100%; display: block; }
   font-weight: 300;
   color: var(--mid-grey);
   line-height: 1.6;
-  max-width: 500px;
 }
 
 /* ─── Untangle Section ────────────────────────────────── */
@@ -942,6 +945,7 @@ img { max-width: 100%; display: block; }
   .quote-section { padding: 64px 24px; }
 
   .features { padding: 64px 0 48px; }
+  .features__list { grid-template-columns: 1fr; }
 
   .untangle-section { padding: 64px 0; }
 
