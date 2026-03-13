@@ -2,7 +2,7 @@
 
 > Think it. Catch it. Keep it.
 
-Static landing page for [noodle](https://noodle.app), the thought-capture app for iOS.
+Static landing page for [noodle](https://noodleapp.xyz), the thought-capture app for iOS.
 
 ## Deploy to Vercel
 
