@@ -171,26 +171,61 @@ function initReveal() {
 /* ─── Waitlist Forms ──────────────────────────────────── */
 
 function initWaitlist() {
+  var SUPABASE_URL = 'https://ctbrhkuweirarotzewfm.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0YnJoa3V3ZWlyYXJvdHpld2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzOTgyMzgsImV4cCI6MjA4ODk3NDIzOH0.BZccQxSugCuE8WuBTh9YGWLQuTdO0z6ZgcBZlc4MPVs';
+
+  function showSuccess() {
+    document.querySelectorAll('.waitlist').forEach(function(f) {
+      f.outerHTML =
+        '<div class="waitlist__success">' +
+        '<div class="waitlist__dot"></div>' +
+        "<p class=\"waitlist__msg\">You're on the list. We'll be in touch.</p>" +
+        '</div>';
+    });
+  }
+
   document.querySelectorAll('.waitlist').forEach(function(form) {
     var input = form.querySelector('.waitlist__input');
     var btn = form.querySelector('.waitlist__btn');
     if (!input || !btn) return;
 
-    btn.addEventListener('click', function() {
+    function handleSubmit() {
       var email = input.value.trim();
-      if (email && email.includes('@') && email.includes('.')) {
-        document.querySelectorAll('.waitlist').forEach(function(f) {
-          f.outerHTML =
-            '<div class="waitlist__success">' +
-            '<div class="waitlist__dot"></div>' +
-            "<p class=\"waitlist__msg\">You're on the list. We'll be in touch.</p>" +
-            '</div>';
-        });
-      }
-    });
+      if (!email || !email.includes('@') || !email.includes('.')) return;
 
+      btn.disabled = true;
+      btn.textContent = '...';
+
+      fetch(SUPABASE_URL + '/rest/v1/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email: email })
+      }).then(function(res) {
+        if (res.ok || res.status === 409) {
+          // 409 = already signed up (unique constraint) — treat as success
+          showSuccess();
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'join waitlist';
+          input.value = '';
+          input.placeholder = 'something went wrong — try again';
+        }
+      }).catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'join waitlist';
+        input.value = '';
+        input.placeholder = 'something went wrong — try again';
+      });
+    }
+
+    btn.addEventListener('click', handleSubmit);
     input.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') btn.click();
+      if (e.key === 'Enter') handleSubmit();
     });
   });
 }

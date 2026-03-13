@@ -125,6 +125,20 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
 }
 
+.nav__logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav__logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
 .nav__logo {
   font-size: 20px;
   font-weight: 700;
@@ -833,11 +847,41 @@ img { max-width: 100%; display: block; }
   gap: 16px;
 }
 
+.footer__logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer__logo-img {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+
 .footer__logo {
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
+
+.footer__nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.footer__nav-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted-grey);
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.footer__nav-link:hover { color: var(--near-black); }
 
 .footer__copy {
   font-family: var(--mono);
@@ -874,6 +918,12 @@ img { max-width: 100%; display: block; }
 
 /* ─── Responsive ──────────────────────────────────────── */
 
+/* Pricing: prevent awkward 2+1 wrap at medium widths */
+@media (max-width: 920px) {
+  .pricing__grid { flex-direction: column; }
+  .tier { min-width: unset; }
+}
+
 @media (max-width: 768px) {
   .wrap { padding: 0 24px; }
   .nav { padding: 20px 24px; }
@@ -882,6 +932,8 @@ img { max-width: 100%; display: block; }
   .hero { padding: 48px 24px 64px; gap: 48px; }
   .hero__content { min-width: 100%; }
 
+  /* Ensure phone mockup container fills its flex row so margin: auto centres it */
+  #phone-mockup { width: 100%; }
   .phone { width: 260px; height: 540px; margin: 0 auto; }
 
   .stats__inner { gap: 32px; padding: 32px 24px; }
@@ -894,11 +946,11 @@ img { max-width: 100%; display: block; }
   .untangle-section { padding: 64px 0; }
 
   .pricing { padding: 64px 0; }
-  .pricing__grid { flex-direction: column; }
 
   .cta-section { padding: 64px 24px; }
 
   .footer__inner { padding: 24px; }
+  .footer__nav { gap: 14px; }
 
   .waitlist { max-width: 100%; }
 }
@@ -907,6 +959,100 @@ img { max-width: 100%; display: block; }
   .hero__title { letter-spacing: -2px; }
   .nav__link:first-child { display: none; }
   .stats__inner { gap: 24px; }
+  .footer__inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer__copy { order: 3; }
+}
+
+/* ─── Policy Pages ───────────────────────────────────── */
+
+.policy-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+}
+
+.policy-page__eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--orange);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.policy-page__title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: -1.8px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.policy-page__updated {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted-grey);
+  margin-bottom: 48px;
+}
+
+.policy-page h2 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  margin: 40px 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.policy-page h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 24px 0 8px;
+}
+
+.policy-page p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mid-grey);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.policy-page ul {
+  margin: 0 0 16px 0;
+  padding-left: 20px;
+}
+
+.policy-page li {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mid-grey);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+.policy-page a {
+  color: var(--orange);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.policy-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted-grey);
+  letter-spacing: 0.5px;
+  margin-bottom: 40px;
+  transition: color 0.2s;
+}
+
+.policy-page__back:hover { color: var(--near-black); }
+
+@media (max-width: 768px) {
+  .policy-page { padding: 40px 24px 80px; }
 }
 
 /* ─── Dark Mode ───────────────────────────────────────── */
@@ -1003,6 +1149,8 @@ img { max-width: 100%; display: block; }
 
   /* Nav link hover */
   .nav__link:hover { color: #F7F5F2; }
+  .footer__nav-link:hover { color: #F7F5F2; }
+  .policy-page__back:hover { color: #F7F5F2; }
 
   /* Section titles in dark context */
   .section-title--light { color: #F7F5F2; }

@@ -34,7 +34,11 @@
 
   <!-- ─── NAV ─── -->
   <nav class="nav">
-    <span class="nav__logo">noodle</span>
+    <a class="nav__logo-link" href="/">
+      <!-- Place your logo file at /assets/img/logo.svg to replace the wordmark -->
+      <img class="nav__logo-img" src="/assets/img/logo.svg" alt="noodle" onerror="this.style.display='none'">
+      <span class="nav__logo">noodle</span>
+    </a>
     <div class="nav__links">
       <a href="#features" class="nav__link">features</a>
       <a href="#untangle" class="nav__link">untangle</a>
@@ -331,8 +335,17 @@
   <!-- ─── FOOTER ─── -->
   <footer class="footer">
     <div class="footer__inner">
-      <span class="footer__logo">noodle</span>
-      <span class="footer__copy">&copy; 2025 noodle &middot; think it. catch it. keep it.</span>
+      <a class="footer__logo-link" href="/">
+        <!-- Place your logo file at /assets/img/logo.svg to replace the wordmark -->
+        <img class="footer__logo-img" src="/assets/img/logo.svg" alt="noodle" onerror="this.style.display='none'">
+        <span class="footer__logo">noodle</span>
+      </a>
+      <nav class="footer__nav" aria-label="Legal">
+        <a href="/privacy.html" class="footer__nav-link">privacy</a>
+        <a href="/terms.html" class="footer__nav-link">terms</a>
+        <a href="/ai-policy.html" class="footer__nav-link">ai policy</a>
+      </nav>
+      <span class="footer__copy">&copy; 2026 noodle &middot; think it. catch it. keep it.</span>
     </div>
   </footer>
 

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "noodle-landing",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "site", "--listen", "3000", "--no-clipboard"],
+      "port": 3000
+    }
+  ]
+}
