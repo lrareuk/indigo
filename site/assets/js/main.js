@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWaitlist();
   initFloatingDot();
   initUntangleDemo();
+  initSupportForm();
 });
 
 /* ─── Typewriter ──────────────────────────────────────── */
@@ -242,6 +243,65 @@ function initFloatingDot() {
 
   dot.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* ─── Support Form ───────────────────────────────────── */
+
+function initSupportForm() {
+  var form = document.getElementById('support-form');
+  if (!form) return;
+
+  var SUPABASE_URL = 'https://ctbrhkuweirarotzewfm.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0YnJoa3V3ZWlyYXJvdHpld2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzOTgyMzgsImV4cCI6MjA4ODk3NDIzOH0.BZccQxSugCuE8WuBTh9YGWLQuTdO0z6ZgcBZlc4MPVs';
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var name = document.getElementById('support-name').value.trim();
+    var email = document.getElementById('support-email').value.trim();
+    var subject = document.getElementById('support-subject').value;
+    var message = document.getElementById('support-message').value.trim();
+
+    if (!name || !email || !subject || !message) return;
+    if (!email.includes('@') || !email.includes('.')) return;
+
+    var btn = form.querySelector('.contact-form__btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch(SUPABASE_URL + '/rest/v1/support_tickets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
+      })
+    }).then(function(res) {
+      if (res.ok) {
+        var section = document.getElementById('contact-form-section');
+        section.innerHTML =
+          '<div class="contact-form__success">' +
+          '<div class="contact-form__success-dot"></div>' +
+          '<p class="contact-form__success-msg">Message sent. We\'ll get back to you within 48 hours.</p>' +
+          '</div>';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Something went wrong — try again';
+        setTimeout(function() { btn.textContent = 'Send message'; }, 3000);
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Something went wrong — try again';
+      setTimeout(function() { btn.textContent = 'Send message'; }, 3000);
+    });
   });
 }
 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — noodle</title>
+  <meta name="description" content="Get help with Noodle. Browse common questions or send us a message.">
+  <meta name="theme-color" content="#F7F5F2">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav class="nav">
+    <a class="nav__logo-link" href="/">
+      <img class="nav__logo-img" src="/assets/img/logo.svg" alt="noodle" onerror="this.style.display='none'">
+      <span class="nav__logo">noodle</span>
+    </a>
+    <div class="nav__links">
+      <a href="/#features" class="nav__link">features</a>
+      <a href="/#untangle" class="nav__link">untangle</a>
+      <a href="/#pricing" class="nav__link">pricing</a>
+    </div>
+  </nav>
+
+  <div class="rule"></div>
+
+  <!-- ─── CONTENT ─── -->
+  <div class="support-page">
+    <a class="support-page__back" href="/">
+      &larr; back to noodle
+    </a>
+
+    <p class="support-page__eyebrow">support</p>
+    <h1 class="support-page__title">How can we help?</h1>
+    <p class="support-page__subtitle">Browse common questions below, or send us a message and we'll get back to you within 48 hours.</p>
+
+    <!-- ─── FAQ ─── -->
+    <div class="faq">
+      <h2 class="faq__heading">Frequently asked questions</h2>
+
+      <div class="faq__item">
+        <p class="faq__q">When is Noodle launching?</p>
+        <p class="faq__a">We're currently in closed beta. Join the <a href="/">waitlist</a> to get early access — we're rolling out invites in waves.</p>
+      </div>
+
+      <div class="faq__item">
+        <p class="faq__q">Which platforms are supported?</p>
+        <p class="faq__a">Noodle is iOS-first. We're launching on iPhone and iPad, with Apple Watch on Pro. Android and web are on the roadmap.</p>
+      </div>
+
+      <div class="faq__item">
+        <p class="faq__q">Is my data private?</p>
+        <p class="faq__a">Yes. Your thoughts are encrypted in transit and at rest. We never sell your data. AI features are opt-in and only process content when you ask. Read our <a href="/privacy.html">privacy policy</a> and <a href="/ai-policy.html">AI policy</a> for details.</p>
+      </div>
+
+      <div class="faq__item">
+        <p class="faq__q">Can I export my data?</p>
+        <p class="faq__a">Pro users can export to Notion, Obsidian, and Apple Notes. All users can request a full data export by contacting us.</p>
+      </div>
+
+      <div class="faq__item">
+        <p class="faq__q">How do I cancel my subscription?</p>
+        <p class="faq__a">Subscriptions are managed through Apple. Go to Settings &gt; Apple ID &gt; Subscriptions on your device. You'll keep Pro features until the end of your billing period.</p>
+      </div>
+
+      <div class="faq__item">
+        <p class="faq__q">I found a bug. How do I report it?</p>
+        <p class="faq__a">Use the contact form below with "Bug report" as the subject. Include as much detail as you can — device model, iOS version, and steps to reproduce help us fix things faster.</p>
+      </div>
+    </div>
+
+    <!-- ─── CONTACT FORM ─── -->
+    <div id="contact-form-section">
+      <h2 class="contact-form__heading">Send us a message</h2>
+
+      <form id="support-form" novalidate>
+        <div class="contact-form__group">
+          <label class="contact-form__label" for="support-name">Name</label>
+          <input class="contact-form__input" type="text" id="support-name" placeholder="Your name" required>
+        </div>
+
+        <div class="contact-form__group">
+          <label class="contact-form__label" for="support-email">Email</label>
+          <input class="contact-form__input" type="email" id="support-email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="contact-form__group">
+          <label class="contact-form__label" for="support-subject">Subject</label>
+          <select class="contact-form__select" id="support-subject" required>
+            <option value="" disabled selected>Choose a topic</option>
+            <option value="General question">General question</option>
+            <option value="Bug report">Bug report</option>
+            <option value="Feature request">Feature request</option>
+            <option value="Account & billing">Account & billing</option>
+            <option value="Data & privacy">Data & privacy</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="contact-form__group">
+          <label class="contact-form__label" for="support-message">Message</label>
+          <textarea class="contact-form__textarea" id="support-message" placeholder="Tell us what's going on..." required></textarea>
+        </div>
+
+        <button class="contact-form__btn" type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a class="footer__logo-link" href="/">
+        <img class="footer__logo-img" src="/assets/img/logo.svg" alt="noodle" onerror="this.style.display='none'">
+        <span class="footer__logo">noodle</span>
+      </a>
+      <nav class="footer__nav" aria-label="Legal">
+        <a href="/privacy.html" class="footer__nav-link">privacy</a>
+        <a href="/terms.html" class="footer__nav-link">terms</a>
+        <a href="/ai-policy.html" class="footer__nav-link">ai policy</a>
+        <a href="/support.html" class="footer__nav-link">support</a>
+      </nav>
+      <span class="footer__copy">&copy; 2026 noodle &middot; think it. catch it. keep it.</span>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>
