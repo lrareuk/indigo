@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingDot();
   initUntangleDemo();
   initSupportForm();
+  initMobileMenu();
 });
 
 /* ─── Typewriter ──────────────────────────────────────── */
@@ -302,6 +303,38 @@ function initSupportForm() {
       btn.textContent = 'Something went wrong — try again';
       setTimeout(function() { btn.textContent = 'Send message'; }, 3000);
     });
+  });
+}
+
+/* ─── Mobile Menu ────────────────────────────────────── */
+
+function initMobileMenu() {
+  var burger = document.querySelector('.nav__burger');
+  var menu = document.querySelector('.mobile-menu');
+  if (!burger || !menu) return;
+
+  var links = menu.querySelectorAll('.mobile-menu__link');
+
+  function toggle() {
+    var isOpen = burger.classList.toggle('is-open');
+    menu.classList.toggle('is-open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
+    menu.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  function close() {
+    burger.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', toggle);
+
+  links.forEach(function(link) {
+    link.addEventListener('click', close);
   });
 }
 
