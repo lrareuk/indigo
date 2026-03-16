@@ -805,6 +805,14 @@ img { max-width: 100%; display: block; }
 
 .tier--accent:hover { border-color: var(--orange); }
 
+.tier--soon { opacity: 0.55; }
+
+.tier__price--soon {
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--muted-grey);
+}
+
 .tier__bar {
   position: absolute;
   top: 0;
@@ -1058,6 +1066,10 @@ img { max-width: 100%; display: block; }
 
   .footer__inner { flex-direction: column; align-items: flex-start; gap: 12px; }
   .footer__copy { order: 3; }
+
+  .tier { padding: 32px 24px; }
+  .tier__price { font-size: 34px; }
+  .tier__feature-text { font-size: 13px; }
 
   .untangle-demo { min-height: 280px; padding: 32px 20px; }
   .untangle-demo__node-label { font-size: 8px; }
